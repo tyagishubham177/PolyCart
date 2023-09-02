@@ -1,4 +1,4 @@
-namespace Basket.API
+namespace PolyCart.Basket.API
 {
     public class WeatherForecast
     {

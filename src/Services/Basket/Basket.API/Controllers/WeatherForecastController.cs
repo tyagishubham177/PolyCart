@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Basket.API.Controllers
+namespace PolyCart.Basket.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
