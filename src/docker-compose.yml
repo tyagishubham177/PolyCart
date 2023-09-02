@@ -5,11 +5,20 @@ services:
   catalogdb:
     image: mongo
 
+  basketdb:
+    image: redis:alpine
+
   polycart.catalog.api:
     image: ${DOCKER_REGISTRY-}polycartcatalogapi
     build:
       context: .
       dockerfile: Services/Catalog/PolyCart.Catalog.API/Dockerfile
+
+  polycart.basket.api:
+    image: ${DOCKER_REGISTRY-}polycartbasketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/PolyCart.Basket.API/Dockerfile
 
 volumes:
   mongo_data:
