@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+
+  catalogdb:
+    image: mongo
+
+  polycart.catalog.api:
+    image: ${DOCKER_REGISTRY-}polycartcatalogapi
+    build:
+      context: .
+      dockerfile: Services/Catalog/PolyCart.Catalog.API/Dockerfile
+
+volumes:
+  mongo_data:
