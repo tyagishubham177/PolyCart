@@ -35,8 +35,15 @@ services:
       context: .
       dockerfile: Services/Discount/PolyCart.Discount.API/Dockerfile
 
+  polycart.discount.grpc:
+    image: ${DOCKER_REGISTRY-}polycartdiscountgrpc
+    build:
+      context: .
+      dockerfile: Services/Discount/PolyCart.Discount.Grpc/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
+
