@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyCart.Discount.API", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyCart.Discount.Grpc", "Services\Discount\PolyCart.Discount.Grpc\PolyCart.Discount.Grpc.csproj", "{AD748EB0-B3EB-4D1F-ADE9-47D350600359}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{059DF49D-BFE3-4965-BDA3-BBD59D677D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyCart.Ordering.API", "Services\Ordering\PolyCart.Ordering.API\PolyCart.Ordering.API.csproj", "{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{AD748EB0-B3EB-4D1F-ADE9-47D350600359}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD748EB0-B3EB-4D1F-ADE9-47D350600359}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD748EB0-B3EB-4D1F-ADE9-47D350600359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,8 @@ Global
 		{6BFA02D5-8448-4996-ADBF-E81218BF98F6} = {D924F62D-28A1-443B-9EC0-70319A8671FA}
 		{626782F3-3919-45F9-9386-131FF093B291} = {6BFA02D5-8448-4996-ADBF-E81218BF98F6}
 		{AD748EB0-B3EB-4D1F-ADE9-47D350600359} = {6BFA02D5-8448-4996-ADBF-E81218BF98F6}
+		{059DF49D-BFE3-4965-BDA3-BBD59D677D6B} = {D924F62D-28A1-443B-9EC0-70319A8671FA}
+		{84A5319D-6F7C-48B0-861C-9A0C77ACF3C7} = {059DF49D-BFE3-4965-BDA3-BBD59D677D6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13EFB039-5C5A-4418-8F0D-6C735D38113A}
