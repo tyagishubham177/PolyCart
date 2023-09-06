@@ -53,9 +53,16 @@ services:
       context: .
       dockerfile: Services/Ordering/PolyCart.Ordering.API/Dockerfile
 
+  polycart.ocelot.apigateway:
+    image: ${DOCKER_REGISTRY-}polycartocelotapigateway
+    build:
+      context: .
+      dockerfile: APIGateways/PolyCart.Ocelot.APIGateway/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
+
 

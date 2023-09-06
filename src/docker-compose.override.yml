@@ -119,3 +119,16 @@ services:
       - rabbitmq 
     ports:
       - "8004:80"
+
+  polycart.ocelot.apigateway:
+    container_name: polycart.ocelot.apigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+        - polycart.catalog.api
+        - polycart.basket.api
+        - polycart.discount.api
+        - polycart.ordering.api
+    ports:
+      - "8010:80"
+

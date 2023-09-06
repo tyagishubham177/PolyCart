@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "polycart.catalog.api": "StartDebugging",
-        "polycart.discount.grpc": "StartDebugging"
+        "polycart.discount.grpc": "StartDebugging",
+        "polycart.ocelot.apigateway": "StartDebugging"
       }
     }
   }
