@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Basket/PolyCart.Basket.API/PolyCart.Basket.API.csproj", "Services/Basket/PolyCart.Basket.API/"]
+COPY ["BuildingBlocks/PolyCart.EventBus.Messages/PolyCart.EventBus.Messages.csproj", "BuildingBlocks/PolyCart.EventBus.Messages/"]
 RUN dotnet restore "Services/Basket/PolyCart.Basket.API/PolyCart.Basket.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Basket/PolyCart.Basket.API"

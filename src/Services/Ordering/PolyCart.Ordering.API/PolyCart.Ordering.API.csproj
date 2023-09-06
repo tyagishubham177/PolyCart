@@ -18,9 +18,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MassTransit" Version="8.1.0" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.EventBus.Messages\PolyCart.EventBus.Messages.csproj" />
     <ProjectReference Include="..\PolyCart.Ordering.Application\PolyCart.Ordering.Application.csproj" />
     <ProjectReference Include="..\PolyCart.Ordering.Infrastructure\PolyCart.Ordering.Infrastructure.csproj" />
   </ItemGroup>
