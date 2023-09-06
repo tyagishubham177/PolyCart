@@ -1,6 +1,9 @@
+using MassTransit;
 using PolyCart.Basket.API.GrpcService;
+using PolyCart.Basket.API.Mapper;
 using PolyCart.Basket.API.Repositories;
 using PolyCart.Discount.Grpc.Protos;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +15,24 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddAutoMapper(typeof(BasketProfile).Assembly);
 
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(o => o.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]));
 builder.Services.AddScoped<DiscountGrpcService>();
+
+builder.Services.AddMassTransit(config => {
+    config.UsingRabbitMq((ctx, cfg) => {
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+    });
+});
+/*builder.Services.ConfigureOptions<MassTransitHostOptions>(options =>
+{
+    options.WaitUntilStarted = true;
+    options.StartTimeout = TimeSpan.FromSeconds(30);
+    options.StopTimeout = TimeSpan.FromMinutes(1);
+});
+//builder.Services.AddMassTransitHostedService();
+*/
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
