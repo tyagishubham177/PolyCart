@@ -132,3 +132,17 @@ services:
     ports:
       - "8010:80"
 
+
+  polycart.shopping.aggregator:
+    container_name: polycart.shopping.aggregator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:CatalogUrl=http://polycart.catalog.api"
+      - "ApiSettings:BasketUrl=http://polycart.basket.api"
+      - "ApiSettings:OrderingUrl=http://polycart.ordering.api"
+    depends_on:
+      - polycart.catalog.api
+      - polycart.basket.api
+      - polycart.ordering.api
+    ports:
+      - "8005:80"

@@ -6,7 +6,8 @@
       "serviceActions": {
         "polycart.catalog.api": "StartDebugging",
         "polycart.discount.grpc": "StartDebugging",
-        "polycart.ocelot.apigateway": "StartDebugging"
+        "polycart.ocelot.apigateway": "StartDebugging",
+        "polycart.shopping.aggregator": "StartDebugging"
       }
     }
   }
