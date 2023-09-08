@@ -1,7 +1,5 @@
 ﻿using PolyCart.Web.Data;
 using PolyCart.Web.Entities;
-using System;
-using System.Threading.Tasks;
 
 namespace PolyCart.Web.Repositories
 {

@@ -1,5 +1,5 @@
-﻿using PolyCart.Web.Models;
-using PolyCart.Web.Extensions;
+﻿using PolyCart.Web.Extensions;
+using PolyCart.Web.Models;
 
 namespace PolyCart.Web.Services
 {

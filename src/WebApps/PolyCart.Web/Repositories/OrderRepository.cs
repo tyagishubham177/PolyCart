@@ -1,10 +1,6 @@
-﻿using PolyCart.Web.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PolyCart.Web.Data;
 using PolyCart.Web.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PolyCart.Web.Repositories
 {

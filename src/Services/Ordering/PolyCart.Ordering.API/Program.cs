@@ -1,6 +1,4 @@
 using MassTransit;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using PolyCart.EventBus.Messages.Common;
 using PolyCart.Ordering.API.EventBusConsumer;
 using PolyCart.Ordering.API.Extensions;
@@ -14,10 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
-builder.Services.AddMassTransit(config => {
+builder.Services.AddMassTransit(config =>
+{
     config.AddConsumer<BasketCheckoutConsumer>();
 
-    config.UsingRabbitMq((ctx, cfg) => {
+    config.UsingRabbitMq((ctx, cfg) =>
+    {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
 
         cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c =>

@@ -2,7 +2,6 @@
 using PolyCart.Catalog.API.Entities;
 using PolyCart.Catalog.API.Repositories;
 using System.Net;
-using System.Xml.Linq;
 
 namespace PolyCart.Catalog.API.Controllers
 {

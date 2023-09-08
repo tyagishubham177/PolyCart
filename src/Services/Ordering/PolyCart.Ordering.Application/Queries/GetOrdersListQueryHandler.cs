@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using PolyCart.Ordering.Application.Contracts.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PolyCart.Ordering.Application.Queries
 {

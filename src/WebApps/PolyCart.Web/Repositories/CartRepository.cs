@@ -1,9 +1,6 @@
-﻿using PolyCart.Web.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using PolyCart.Web.Data;
 using PolyCart.Web.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PolyCart.Web.Repositories
 {
@@ -18,7 +15,7 @@ namespace PolyCart.Web.Repositories
 
         public async Task<Cart> GetCartByUserName(string userName)
         {
-            var cart =  _dbContext.Carts
+            var cart = _dbContext.Carts
                         .Include(c => c.Items)
                             .ThenInclude(i => i.Product)
                         .FirstOrDefault(c => c.UserName == userName);
@@ -40,7 +37,7 @@ namespace PolyCart.Web.Repositories
         public async Task AddItem(string userName, int productId, int quantity = 1, string color = "Black")
         {
             var cart = await GetCartByUserName(userName);
-            
+
             cart.Items.Add(
                     new CartItem
                     {
@@ -68,7 +65,7 @@ namespace PolyCart.Web.Repositories
 
                 _dbContext.Entry(cart).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
-            }                
+            }
 
         }
 

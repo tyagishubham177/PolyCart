@@ -1,4 +1,3 @@
-using PolyCart.Shopping.Aggregator.Models;
 using PolyCart.Shopping.Aggregator.Services;
 
 var builder = WebApplication.CreateBuilder(args);

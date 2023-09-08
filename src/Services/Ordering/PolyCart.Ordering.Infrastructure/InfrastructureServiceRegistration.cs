@@ -7,11 +7,6 @@ using PolyCart.Ordering.Application.Models;
 using PolyCart.Ordering.Infrastructure.Mail;
 using PolyCart.Ordering.Infrastructure.Persistence;
 using PolyCart.Ordering.Infrastructure.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PolyCart.Ordering.Infrastructure
 {

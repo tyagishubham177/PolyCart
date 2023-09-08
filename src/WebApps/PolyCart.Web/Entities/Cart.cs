@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace PolyCart.Web.Entities
+﻿namespace PolyCart.Web.Entities
 {
     public class Cart
     {

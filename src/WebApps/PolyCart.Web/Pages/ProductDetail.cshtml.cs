@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using PolyCart.Web.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PolyCart.Web.Models;
 using PolyCart.Web.Services;

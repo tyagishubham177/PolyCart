@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PolyCart.EventBus.Messages.Events
+﻿namespace PolyCart.EventBus.Messages.Events
 {
     public class BasketCheckoutEvent : IntegrationBaseEvent
     {

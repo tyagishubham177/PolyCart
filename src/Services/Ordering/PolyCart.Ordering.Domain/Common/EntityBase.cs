@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PolyCart.Ordering.Domain.Common
+﻿namespace PolyCart.Ordering.Domain.Common
 {
     public abstract class EntityBase
     {

@@ -1,5 +1,4 @@
 using Grpc.Core;
-using PolyCart.Discount.Grpc;
 
 namespace PolyCart.Discount.Grpc.Services
 {

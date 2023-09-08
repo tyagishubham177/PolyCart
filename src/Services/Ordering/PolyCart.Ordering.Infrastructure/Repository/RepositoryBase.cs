@@ -2,12 +2,7 @@
 using PolyCart.Ordering.Application.Contracts.Persistence;
 using PolyCart.Ordering.Domain.Common;
 using PolyCart.Ordering.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PolyCart.Ordering.Infrastructure.Repository
 {

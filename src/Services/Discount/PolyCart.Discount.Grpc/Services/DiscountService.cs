@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Grpc.Core;
-using PolyCart.Discount.Grpc.Repositories;
 using PolyCart.Discount.Grpc.Entities;
 using PolyCart.Discount.Grpc.Protos;
+using PolyCart.Discount.Grpc.Repositories;
 
 namespace PolyCart.Discount.Grpc.Services
 {

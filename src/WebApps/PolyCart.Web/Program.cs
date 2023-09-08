@@ -1,7 +1,4 @@
 using PolyCart.Web.Data;
-using PolyCart.Web.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System;
 using PolyCart.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);

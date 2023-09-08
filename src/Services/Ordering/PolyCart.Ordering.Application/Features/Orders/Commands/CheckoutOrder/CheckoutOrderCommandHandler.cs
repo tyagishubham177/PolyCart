@@ -5,11 +5,6 @@ using PolyCart.Ordering.Application.Contracts.Infrastructure;
 using PolyCart.Ordering.Application.Contracts.Persistence;
 using PolyCart.Ordering.Application.Models;
 using PolyCart.Ordering.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PolyCart.Ordering.Application.Features.Orders.Commands.CheckoutOrder
 {

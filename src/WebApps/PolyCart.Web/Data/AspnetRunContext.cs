@@ -1,5 +1,5 @@
-﻿using PolyCart.Web.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PolyCart.Web.Entities;
 
 namespace PolyCart.Web.Data
 {
