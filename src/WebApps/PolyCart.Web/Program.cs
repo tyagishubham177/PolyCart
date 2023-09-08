@@ -2,34 +2,34 @@ using PolyCart.Web.Data;
 using PolyCart.Web.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
+using PolyCart.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Read configuration
-var configuration = builder.Configuration;
+var Configuration = builder.Configuration;
 
-// Register services in DI
-#region database services
+#region repositoriesLocal
 
-//// use in-memory database
+//use in-memory database
 //builder.Services.AddDbContext<AspnetRunContext>(c =>
 //    c.UseInMemoryDatabase("PolycartConnection"));
 
-// add database dependency
-builder.Services.AddDbContext<AspnetRunContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PolyCartConnection")));
+//add database dependency
+//builder.Services.AddDbContext<AspnetRunContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("PolyCartConnection")));
 
-#endregion            
-
-#region project services
-
-// add repository dependency
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IContactRepository, ContactRepository>();
+//add repository dependency
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<ICartRepository, CartRepository>();
+//builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+//builder.Services.AddScoped<IContactRepository, ContactRepository>();
 
 #endregion
+
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+builder.Services.AddHttpClient<IBasketService, BasketService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+builder.Services.AddHttpClient<IOrderService, OrderService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
 
 builder.Services.AddRazorPages();
 

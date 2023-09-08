@@ -146,3 +146,17 @@ services:
       - polycart.ordering.api
     ports:
       - "8005:80"
+
+  polycart.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:GatewayAddress=http://polycart.ocelot.apigateway"
+    depends_on:
+      - polycart.ocelot.apigateway
+      - polycart.catalog.api
+      - polycart.basket.api
+      - polycart.discount.api
+      - polycart.ordering.api
+    ports:
+      - "8006:80"
+
