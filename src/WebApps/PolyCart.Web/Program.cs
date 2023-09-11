@@ -1,5 +1,9 @@
+using PolyCart.Common.Logging;
 using PolyCart.Web.Data;
 using PolyCart.Web.Services;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,16 +28,23 @@ var Configuration = builder.Configuration;
 
 #endregion
 
-builder.Services.AddHttpClient<ICatalogService, CatalogService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
-builder.Services.AddHttpClient<IBasketService, BasketService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
-builder.Services.AddHttpClient<IOrderService, OrderService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+builder.Services.AddTransient<LoggingDelegatingHandler>();
+
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>();
+builder.Services.AddHttpClient<IBasketService, BasketService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>(); ;
+builder.Services.AddHttpClient<IOrderService, OrderService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>(); ;
 
 builder.Services.AddRazorPages();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 var app = builder.Build();
 
 // Seed database
-SeedDatabase(app);
+//SeedDatabase(app);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
