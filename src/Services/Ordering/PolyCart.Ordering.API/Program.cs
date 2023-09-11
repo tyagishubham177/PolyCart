@@ -1,4 +1,5 @@
 using MassTransit;
+using HealthChecks.UI.Client;
 using PolyCart.Common.Logging;
 using PolyCart.EventBus.Messages.Common;
 using PolyCart.Ordering.API.EventBusConsumer;
@@ -7,6 +8,7 @@ using PolyCart.Ordering.Application;
 using PolyCart.Ordering.Infrastructure;
 using PolyCart.Ordering.Infrastructure.Persistence;
 using Serilog;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +41,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddHealthChecks().AddDbContextCheck<OrderContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,6 +55,12 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.MigrateDatabase<OrderContext>((context, services) =>
 {

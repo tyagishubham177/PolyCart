@@ -1,9 +1,10 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using PolyCart.Common.Logging;
 using PolyCart.Web.Data;
 using PolyCart.Web.Services;
 using Serilog;
-using Serilog.Sinks.Elasticsearch;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,9 @@ builder.Services.AddRazorPages();
 
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddHealthChecks()
+    .AddUrlGroup(new Uri(Configuration["ApiSettings:GatewayAddress"] + "/Catalog"), failureStatus: HealthStatus.Degraded);
+
 var app = builder.Build();
 
 // Seed database
@@ -66,6 +70,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
 

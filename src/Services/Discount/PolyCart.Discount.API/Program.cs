@@ -1,3 +1,5 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using PolyCart.Common.Logging;
 using PolyCart.Discount.API.Extensions;
 using PolyCart.Discount.API.Repositories;
@@ -16,6 +18,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Host.UseSerilog(SeriLogger.Configure);
 
+builder.Services.AddHealthChecks()
+                .AddNpgSql(builder.Configuration["DatabaseSettings:ConnectionString"]);
+
 var app = builder.Build();
 
 app.Services.CreateScope().ServiceProvider.GetRequiredService<IHost>().MigrateDatabase<Program>();
@@ -30,5 +35,11 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
