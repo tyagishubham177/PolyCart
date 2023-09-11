@@ -1,6 +1,8 @@
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using PolyCart.Common.Logging;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddOcelot().AddCacheManager(settings => settings.WithDictionary
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 var app = builder.Build();
 

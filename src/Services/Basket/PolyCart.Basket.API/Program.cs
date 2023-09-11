@@ -2,8 +2,9 @@ using MassTransit;
 using PolyCart.Basket.API.GrpcService;
 using PolyCart.Basket.API.Mapper;
 using PolyCart.Basket.API.Repositories;
+using PolyCart.Common.Logging;
 using PolyCart.Discount.Grpc.Protos;
-
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 var app = builder.Build();
 

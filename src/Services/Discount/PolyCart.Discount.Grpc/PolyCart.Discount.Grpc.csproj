@@ -28,4 +28,8 @@
     <PackageReference Include="Npgsql" Version="7.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.Common.Logging\PolyCart.Common.Logging.csproj" />
+  </ItemGroup>
+
 </Project>

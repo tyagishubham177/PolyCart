@@ -1,10 +1,12 @@
 using MassTransit;
+using PolyCart.Common.Logging;
 using PolyCart.EventBus.Messages.Common;
 using PolyCart.Ordering.API.EventBusConsumer;
 using PolyCart.Ordering.API.Extensions;
 using PolyCart.Ordering.Application;
 using PolyCart.Ordering.Infrastructure;
 using PolyCart.Ordering.Infrastructure.Persistence;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 var app = builder.Build();
 

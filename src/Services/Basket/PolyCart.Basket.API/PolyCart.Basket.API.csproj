@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.Common.Logging\PolyCart.Common.Logging.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.EventBus.Messages\PolyCart.EventBus.Messages.csproj" />
   </ItemGroup>
 

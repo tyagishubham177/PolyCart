@@ -1,7 +1,9 @@
+using PolyCart.Common.Logging;
 using PolyCart.Discount.Grpc.Extensions;
 using PolyCart.Discount.Grpc.Mapper;
 using PolyCart.Discount.Grpc.Repositories;
 using PolyCart.Discount.Grpc.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddAutoMapper(typeof(DiscountProfile).Assembly);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 var app = builder.Build();
 
