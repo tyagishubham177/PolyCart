@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Ordering/PolyCart.Ordering.API/PolyCart.Ordering.API.csproj", "Services/Ordering/PolyCart.Ordering.API/"]
+COPY ["BuildingBlocks/PolyCart.Common.Logging/PolyCart.Common.Logging.csproj", "BuildingBlocks/PolyCart.Common.Logging/"]
 COPY ["BuildingBlocks/PolyCart.EventBus.Messages/PolyCart.EventBus.Messages.csproj", "BuildingBlocks/PolyCart.EventBus.Messages/"]
 COPY ["Services/Ordering/PolyCart.Ordering.Application/PolyCart.Ordering.Application.csproj", "Services/Ordering/PolyCart.Ordering.Application/"]
 COPY ["Services/Ordering/PolyCart.Ordering.Domain/PolyCart.Ordering.Domain.csproj", "Services/Ordering/PolyCart.Ordering.Domain/"]
