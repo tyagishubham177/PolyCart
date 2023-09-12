@@ -9,22 +9,18 @@ PolyCart is a polyglot microservices e-commerce platform designed for scalabilit
 ### Catalog Microservice
 - **Stack**: ASP.NET Core Web API, MongoDB
 - **Features**: RESTful CRUD ops, Repository Pattern, Swagger API docs
-- **Containerization**: MongoDB
 
 ### Basket Microservice
 - **Stack**: ASP.NET Core Web API, Redis
 - **Features**: RESTful CRUD ops, Discount calculations via gRPC, MassTransit-RabbitMQ for event queues
-- **Containerization**: Redis
 
 ### Discount Microservice
 - **Stack**: ASP.NET Grpc, PostgreSQL, Dapper micro-ORM
 - **Features**: High-performance gRPC inter-service comms, Protobuf message serialization
-- **Containerization**: PostgreSQL
 
 ### Ordering Microservice
 - **Stack**: DDD, CQRS, Clean Architecture, SqlServer, Entity Framework Core
 - **Features**: MediatR, FluentValidation, AutoMapper, MassTransit-RabbitMQ consumer
-- **Containerization**: SqlServer, Auto-migration on startup
 
 ### API Gateway (Ocelot)
 - **Features**: Route aggregation, support for multiple API Gateway types
