@@ -1,9 +1,13 @@
+using HealthChecks.UI.Client;
 using MassTransit;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using PolyCart.Basket.API.GrpcService;
 using PolyCart.Basket.API.Mapper;
 using PolyCart.Basket.API.Repositories;
+using PolyCart.Common.Logging;
 using PolyCart.Discount.Grpc.Protos;
-
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +45,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Host.UseSerilog(SeriLogger.Configure);
+
+builder.Services.AddHealthChecks()
+    .AddRedis(builder.Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,5 +61,11 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();

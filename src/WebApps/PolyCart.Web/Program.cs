@@ -1,5 +1,10 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using PolyCart.Common.Logging;
 using PolyCart.Web.Data;
 using PolyCart.Web.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,16 +29,26 @@ var Configuration = builder.Configuration;
 
 #endregion
 
-builder.Services.AddHttpClient<ICatalogService, CatalogService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
-builder.Services.AddHttpClient<IBasketService, BasketService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
-builder.Services.AddHttpClient<IOrderService, OrderService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]));
+builder.Services.AddTransient<LoggingDelegatingHandler>();
+
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>();
+builder.Services.AddHttpClient<IBasketService, BasketService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>(); ;
+builder.Services.AddHttpClient<IOrderService, OrderService>(c => c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
+    .AddHttpMessageHandler<LoggingDelegatingHandler>(); ;
 
 builder.Services.AddRazorPages();
+
+builder.Host.UseSerilog(SeriLogger.Configure);
+
+builder.Services.AddHealthChecks()
+    .AddUrlGroup(new Uri(Configuration["ApiSettings:GatewayAddress"] + "/Catalog"), failureStatus: HealthStatus.Degraded);
 
 var app = builder.Build();
 
 // Seed database
-SeedDatabase(app);
+//SeedDatabase(app);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -55,6 +70,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
 

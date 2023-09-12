@@ -9,8 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+    <PackageReference Include="Polly" Version="7.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
@@ -24,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.Common.Logging\PolyCart.Common.Logging.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\PolyCart.EventBus.Messages\PolyCart.EventBus.Messages.csproj" />
     <ProjectReference Include="..\PolyCart.Ordering.Application\PolyCart.Ordering.Application.csproj" />
     <ProjectReference Include="..\PolyCart.Ordering.Infrastructure\PolyCart.Ordering.Infrastructure.csproj" />

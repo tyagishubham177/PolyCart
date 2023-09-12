@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["APIGateways/PolyCart.Ocelot.APIGateway/PolyCart.Ocelot.APIGateway.csproj", "APIGateways/PolyCart.Ocelot.APIGateway/"]
+COPY ["BuildingBlocks/PolyCart.Common.Logging/PolyCart.Common.Logging.csproj", "BuildingBlocks/PolyCart.Common.Logging/"]
 RUN dotnet restore "APIGateways/PolyCart.Ocelot.APIGateway/PolyCart.Ocelot.APIGateway.csproj"
 COPY . .
 WORKDIR "/src/APIGateways/PolyCart.Ocelot.APIGateway"

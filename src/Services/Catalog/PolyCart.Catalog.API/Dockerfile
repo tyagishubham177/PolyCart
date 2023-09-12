@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Services/Catalog/PolyCart.Catalog.API/PolyCart.Catalog.API.csproj", "Services/Catalog/PolyCart.Catalog.API/"]
+COPY ["BuildingBlocks/PolyCart.Common.Logging/PolyCart.Common.Logging.csproj", "BuildingBlocks/PolyCart.Common.Logging/"]
 RUN dotnet restore "Services/Catalog/PolyCart.Catalog.API/PolyCart.Catalog.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Catalog/PolyCart.Catalog.API"

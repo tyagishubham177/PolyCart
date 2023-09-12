@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["APIGateways/PolyCart.Shopping.Aggregator/PolyCart.Shopping.Aggregator.csproj", "APIGateways/PolyCart.Shopping.Aggregator/"]
+COPY ["BuildingBlocks/PolyCart.Common.Logging/PolyCart.Common.Logging.csproj", "BuildingBlocks/PolyCart.Common.Logging/"]
 RUN dotnet restore "APIGateways/PolyCart.Shopping.Aggregator/PolyCart.Shopping.Aggregator.csproj"
 COPY . .
 WORKDIR "/src/APIGateways/PolyCart.Shopping.Aggregator"

@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["WebApps/PolyCart.Web/PolyCart.Web.csproj", "WebApps/PolyCart.Web/"]
+COPY ["BuildingBlocks/PolyCart.Common.Logging/PolyCart.Common.Logging.csproj", "BuildingBlocks/PolyCart.Common.Logging/"]
 RUN dotnet restore "WebApps/PolyCart.Web/PolyCart.Web.csproj"
 COPY . .
 WORKDIR "/src/WebApps/PolyCart.Web"
