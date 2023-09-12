@@ -69,21 +69,21 @@ Please allow some time for all microservices to be up and running.
 
 ### Microservice Endpoints
 
-| Service Name        | URL                                                         |
-|---------------------|-------------------------------------------------------------|
-| Catalog API         | `http://host.docker.internal:8000/swagger/index.html`        |
-| Basket API          | `http://host.docker.internal:8001/swagger/index.html`        |
-| Discount API        | `http://host.docker.internal:8002/swagger/index.html`        |
-| Ordering API        | `http://host.docker.internal:8004/swagger/index.html`        |
-| Shopping.Aggregator | `http://host.docker.internal:8005/swagger/index.html`        |
-| API Gateway         | `http://host.docker.internal:8010/Catalog`                   |
-| RabbitMQ Dashboard  | `http://host.docker.internal:15672` (Credentials: guest/guest)|
-| Portainer           | `http://host.docker.internal:9000` (Credentials: admin/admin1234)|
-| pgAdmin             | `http://host.docker.internal:5050` (Credentials: admin@aspnetrun.com/admin1234)|
-| Elasticsearch       | `http://host.docker.internal:9200`                           |
-| Kibana              | `http://host.docker.internal:5601`                           |
-| Web Status          | `http://host.docker.internal:8007`                           |
-| Web UI              | `http://host.docker.internal:8006`                           |
+| Service Name        | URL                                                         | Others(Credentials, Comments, etc) |
+|---------------------|-------------------------------------------------------------|------------------------------|
+| Catalog API         | `http://host.docker.internal:8000/swagger/index.html`        | N/A                          |
+| Basket API          | `http://host.docker.internal:8001/swagger/index.html`        | N/A                          |
+| Discount API        | `http://host.docker.internal:8002/swagger/index.html`        | N/A                          |
+| Ordering API        | `http://host.docker.internal:8004/swagger/index.html`        | N/A                          |
+| Shopping.Aggregator | `http://host.docker.internal:8005/swagger/index.html`        | N/A                          |
+| API Gateway         | `http://host.docker.internal:8010/Catalog`                   | N/A                          |
+| RabbitMQ Dashboard  | `http://host.docker.internal:15672`                          | guest/guest                  |
+| Portainer           | `http://host.docker.internal:9000`                           | admin/admin1234              |
+| pgAdmin             | `http://host.docker.internal:5050`                           | admin@aspnetrun.com/admin1234|
+| Elasticsearch       | `http://host.docker.internal:9200`                           | N/A                          |
+| Kibana              | `http://host.docker.internal:5601`                           | N/A                          |
+| Web Status          | `http://host.docker.internal:8007`                           | N/A                          |
+| Web UI              | `http://host.docker.internal:8006`                           | N/A                          |
 
 
 
