@@ -38,7 +38,7 @@ Check and add or remove.
 You will **need** these :
 - [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 - [.Net7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-- [Docker Desktop]([https://github.com](https://www.docker.com/products/docker-desktop/))
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ## Steps
 1. First item
