@@ -1,38 +1,48 @@
 # PolyCart
+PolyCart is a polyglot microservices e-commerce platform designed for scalability and resilience. Built on a diverse tech stack including ASP.NET Core, Redis, MongoDB, and PostgreSQL, it features an array of services such as Catalog, Basket, and Discount, optimized for RESTful and gRPC inter-service communication. The architecture incorporates industry best practices such as DDD, CQRS, and Clean Architecture, and utilizes RabbitMQ with MassTransit for event-driven asynchronous messaging. Resilience patterns with Polly, centralized logging via the ELK stack, and container orchestration through Docker Compose further enhance the system's robustness and manageability.
 
 # Project Architecture
 <img src="https://github.com/tyagishubham177/PolyCart/blob/main/img/projarch.png" alt="GitHub Logo" width="600" height="400">
 
 # What's Including In This Repository
 
-## APIs
-About APIs
+### Catalog Microservice
+- **Stack**: ASP.NET Core Web API, MongoDB
+- **Features**: RESTful CRUD ops, Repository Pattern, Swagger API docs
+- **Containerization**: MongoDB
 
-- Catalog.API
-- Ordering.API
-- Basket.API
+### Basket Microservice
+- **Stack**: ASP.NET Core Web API, Redis
+- **Features**: RESTful CRUD ops, Discount calculations via gRPC, MassTransit-RabbitMQ for event queues
+- **Containerization**: Redis
 
-## API Gateway
-### Ocelot Gateway
-About Gateway
+### Discount Microservice
+- **Stack**: ASP.NET Grpc, PostgreSQL, Dapper micro-ORM
+- **Features**: High-performance gRPC inter-service comms, Protobuf message serialization
+- **Containerization**: PostgreSQL
 
-## Web Apps
-### Shopping App
-About shopping App
+### Ordering Microservice
+- **Stack**: DDD, CQRS, Clean Architecture, SqlServer, Entity Framework Core
+- **Features**: MediatR, FluentValidation, AutoMapper, MassTransit-RabbitMQ consumer
+- **Containerization**: SqlServer, Auto-migration on startup
 
-## Other Ancillary Features
+### API Gateway (Ocelot)
+- **Features**: Route aggregation, support for multiple API Gateway types
 
-### Polly
-About Polly 
+### WebUI (ShoppingApp)
+- **Stack**: ASP.NET Core, Bootstrap 4, Razor
+- **Features**: Ocelot API integration, HttpClientFactory, Polly resilience
 
-### Portainer 
-About Portainer
+### Cross-Cutting Concerns
+- **Logging**: ELK Stack (Elasticsearch, Logstash, Kibana), SeriLog
+- **Health Monitoring**: HealthChecks, Watchdog service
 
-### Docker
-About Docker
+### Resilience
+- **Policies**: IHttpClientFactory, Retry/Circuit Breaker via Polly
 
-### Anything missed
-Check and add or remove.
+### Ancillary Containers
+- **Management**: Portainer, pgAdmin
+- **Infrastructure**: Docker Compose for container orchestration, Env variable overrides
 
 # Run The Project
 You will **need** these :
