@@ -1,7 +1,7 @@
 # PolyCart
 
 # Project Architecture
-<img src="https://github.com/tyagishubham177/PolyCart/blob/main/img/polycart.jpeg" alt="GitHub Logo" width="300" height="300">
+<img src="https://github.com/tyagishubham177/PolyCart/blob/main/img/projarch.png" alt="GitHub Logo" width="500" height="400">
 
 # What's Including In This Repository
 
