@@ -4,7 +4,7 @@ PolyCart is a polyglot microservices e-commerce platform designed for scalabilit
 # Project Architecture
 <img src="https://github.com/tyagishubham177/PolyCart/blob/main/img/projarch.png" alt="GitHub Logo" width="600" height="400">
 
-# What's Including In This Repository
+# What's included in this repository
 
 ### Catalog Microservice
 - **Stack**: ASP.NET Core Web API, MongoDB
